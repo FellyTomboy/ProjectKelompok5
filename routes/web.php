@@ -1,16 +1,25 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\AdminController; // Tambahkan use untuk AdminController
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
+// Rute untuk halaman utama (welcome) jika pengguna belum login
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('welcome');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+// Rute untuk dashboard berdasarkan role setelah login
+Route::middleware('auth')->get('/dashboard', function () {
+    // Cek role pengguna
+    if (Auth::user()->hasRole('admin')) {
+        // Jika admin, arahkan ke dashboard admin
+        return view('AdminDashboard');
+    } else {
+        // Jika user biasa, arahkan ke dashboard user
+        return view('UserDashboard');
+    }
+})->name('dashboard');
 
 // Rute untuk profil pengguna, hanya bisa diakses jika sudah login
 Route::middleware('auth')->group(function () {
@@ -20,13 +29,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
-
-// Dashboard untuk admin
-Route::middleware(['auth', 'admin'])->group(function () {
-    Route::get('/admin', function () {
-        return view('dashboard'); // Dashboard admin
-    })->name('admin.dashboard');
 });
 
 // Memuat file untuk rute otentikasi

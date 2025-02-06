@@ -1,15 +1,58 @@
-@extends('layouts.app')
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resep Sehat</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Navbar Transparan */
+        .navbar {
+            background-color: rgba(255, 255, 255, 0.5); /* Transparan dengan sedikit warna putih */
+        }
 
-@section('content')
+        /* Hero Section dengan Background Image */
+        .hero-section {
+            background-image: url('{{ asset("assets/images/padthai-shrimp-black-bowl-with-eggs-spring-onion-seasoning-wooden-table.jpg") }}');
+            background-size: cover;
+            background-position: center;
+            height: 100vh; /* Ukuran penuh layar */
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+        }
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5); /* Memberikan efek transparan hitam */
+            z-index: 1;
+        }
+        .hero-section .content {
+            position: relative;
+            z-index: 2;
+        }
+    </style>
+</head>
+<body>
+
     <!-- Top Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container">
             <a class="navbar-brand" href="#">
-                <img src="path_to_logo.png" alt="Logo" width="30" height="30" class="d-inline-block align-top">
-                Nama Website
+                <img src="{{ asset('assets/images/2__1_-removebg-preview.png') }}" alt="Logo" height="25" class="d-inline-block align-top">
             </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ml-auto">
+                <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('login') }}">Login</a>
                     </li>
@@ -22,12 +65,13 @@
     </nav>
 
     <!-- Hero Section with Image and Headline -->
-    <div class="container-fluid" style="background: rgba(0, 0, 0, 0.5); height: 300px;">
-        <div class="row justify-content-center align-items-center" style="height: 100%;">
-            <div class="col text-center text-white">
-                <h1 class="display-4">Resep Sehat Mulai Hari Ini</h1>
-                <p class="lead">Mulai hidup sehat dengan resep pilihan yang mudah dan bergizi.</p>
-            </div>
+    <div class="hero-section">
+        <div class="content">
+            <h1 class="display-4">Inspirasi Masakan Harian Ada di Sini!</h1>
+            <p class="lead">Jelajahi inspirasi masakan tanpa batas, dengan NutriSmart</p>
         </div>
     </div>
-@endsection
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
