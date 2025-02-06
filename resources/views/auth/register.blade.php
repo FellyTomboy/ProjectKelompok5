@@ -2,6 +2,13 @@
     <form method="POST" action="{{ route('register') }}">
         @csrf
 
+        <!-- Logo -->
+        <div class="flex justify-center mb-4">
+            <a href="/">
+                <img src="{{ asset('assets/images/2__1_-removebg-preview.png') }}" alt="Logo" class=" w-auto h-auto">
+            </a>
+        </div>
+
         <!-- Name -->
         <div>
             <x-input-label for="name" :value="__('Name')" />

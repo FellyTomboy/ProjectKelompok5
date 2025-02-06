@@ -23,6 +23,7 @@
             justify-content: center;
             text-align: center;
             position: relative;
+            flex-direction: column;
         }
         .hero-section::before {
             content: '';
@@ -37,6 +38,16 @@
         .hero-section .content {
             position: relative;
             z-index: 2;
+        }
+        .hero-section .btn-primary {
+            background-color: #28a745; /* Warna hijau */
+            border: none;
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            margin-top: 15px;
+        }
+        .hero-section .btn-primary:hover {
+            background-color: #218838; /* Warna hijau lebih gelap saat hover */
         }
     </style>
 </head>
@@ -69,6 +80,7 @@
         <div class="content">
             <h1 class="display-4">Inspirasi Masakan Harian Ada di Sini!</h1>
             <p class="lead">Jelajahi inspirasi masakan tanpa batas, dengan NutriSmart</p>
+            <a href="{{ route('login') }}" class="btn btn-primary">Mulai Memasak</a>
         </div>
     </div>
 

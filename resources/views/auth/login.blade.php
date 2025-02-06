@@ -2,8 +2,15 @@
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
 
-    <form method="POST" action="{{ route('login') }}">
+    <form method="POST" action="{{ route('login') }}" class="bg-white p-6 rounded-lg shadow-md w-full sm:max-w-md">
         @csrf
+
+        <!-- Logo -->
+        <div class="flex justify-center mb-4">
+            <a href="/">
+                <img src="{{ asset('assets/images/2__1_-removebg-preview.png') }}" alt="Logo" class=" w-auto h-auto">
+            </a>
+        </div>
 
         <!-- Email Address -->
         <div>
@@ -15,12 +22,7 @@
         <!-- Password -->
         <div class="mt-4">
             <x-input-label for="password" :value="__('Password')" />
-
-            <x-text-input id="password" class="block mt-1 w-full"
-                            type="password"
-                            name="password"
-                            required autocomplete="current-password" />
-
+            <x-text-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="current-password" />
             <x-input-error :messages="$errors->get('password')" class="mt-2" />
         </div>
 
